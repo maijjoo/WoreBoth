@@ -1,84 +1,93 @@
-# Turborepo starter
+# WoreBoth.com - 축구 이력 퀴즈 게임 웹 서비스
 
-This Turborepo starter is maintained by the Turborepo core team.
+## 🎯 서비스 개요
 
-## Using this example
+WoreBoth.com은 축구 선수의 이력을 테마로 한 퀴즈 게임 웹 서비스입니다. "그 선수, 거기서도 뛰었어?"라는 슬로건 아래, 두 팀 모두에서 뛴 적 있는 선수를 맞히는 퀴즈를 통해 축구 팬들의 지식을 테스트하고 공유할 수 있습니다.
 
-Run the following command:
+## 🎮 게임 규칙
 
-```sh
-npx create-turbo@latest
+### 🎯 게임 목표
+
+- 두 팀(A, B)에서 모두 뛴 적 있는 선수를 맞히는 것
+- 제한시간 내 정답 입력 시 성공
+- 난이도 및 정답 유무에 따라 점수 부여
+
+### ⏱️ 제한 요소
+
+- 기본 제한 시간: 20초
+- 오답 시 게임 종료 (또는 제한 시도 횟수 허용)
+
+## 🔧 기능 구성
+
+### 🌐 사용자 화면
+
+- 홈: 게임 시작 버튼 + 설명
+- 퀴즈 시작 화면:
+  - 팀 A 선택 입력창
+  - 난이도 선택 체크박스 (상/중/하)
+  - 임대 포함 여부 체크박스
+  - 리그 필터링 체크박스 (EPL, 라리가, 세리에A, 분데스리가)
+  - 이전 설정 자동 로드 (Zustand + LocalStorage)
+- 퀴즈 화면:
+  - 팀 A, 팀 B 엠블럼 표시
+  - 텍스트 입력창
+  - 타이머 (20초)
+- 결과 화면:
+  - 정답 여부
+  - 정답 공개
+  - 점수 표시
+  - 랭킹 입력
+
+### 🛠️ 관리자 기능
+
+- 선수 DB 관리 (API 동기화 or 수동 등록)
+- 팀, 이력 데이터 정제
+- 사용자 기록/랭킹 조회
+- 리포트 분석 (UX 개선 근거)
+
+## 🛠️ 기술 스택
+
+### 프론트엔드
+
+- Next.js 14.0.4
+- TypeScript
+- TailwindCSS
+- Zustand (상태 관리)
+- LocalStorage (이전 설정 저장)
+
+### 백엔드
+
+- NestJS 10.1.16
+- TypeScript
+- PostgreSQL (미래 확장 예정)
+
+## 🚀 개발 환경 설정
+
+### 필수 의존성 설치
+
+```bash
+pnpm install
 ```
 
-## What's inside?
+### 프론트엔드 개발
 
-This Turborepo includes the following packages/apps:
-
-### Apps and Packages
-
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
-
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
-
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
+```bash
+# 프론트엔드 개발 서버
+pnpm run dev --filter=client
 ```
 
-### Develop
+### 백엔드 개발
 
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
+```bash
+# 백엔드 개발 서버
+pnpm run dev --filter=server
 ```
 
-### Remote Caching
+### 빌드
 
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
+```bash
+pnpm run build
 ```
 
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.com/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.com/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.com/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.com/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.com/docs/reference/configuration)
-- [CLI Usage](https://turborepo.com/docs/reference/command-line-reference)
+📝 라이선스
+MIT
