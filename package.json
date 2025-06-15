@@ -1,5 +1,5 @@
 {
-  "name": "WoreBoth.com",
+  "name": "WoreBoth",
   "private": true,
   "scripts": {
     "build": "turbo run build",
